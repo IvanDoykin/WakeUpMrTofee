@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     private const float _timeForMovement = 1f;
 
+    [SerializeField] private float _distance = 0.125f;
     [SerializeField] private Transform _pointStart;
     [SerializeField] private Transform _pointEnd;
 
@@ -22,7 +23,7 @@ public class Movement : MonoBehaviour
         if (_reversed)
         {
             _body.MovePosition(transform.position + (_pointEnd.transform.position - _pointStart.transform.position) * _timeForMovement * Time.fixedDeltaTime);
-            if (Vector3.Distance(transform.position, _pointEnd.transform.position) < 0.1f)
+            if (Vector3.Distance(transform.position, _pointEnd.transform.position) < _distance)
             {
                 _reversed = false;
             }
@@ -30,7 +31,7 @@ public class Movement : MonoBehaviour
         else
         {
             _body.MovePosition(transform.position + (_pointStart.transform.position - _pointEnd.transform.position) * _timeForMovement * Time.fixedDeltaTime);
-            if (Vector3.Distance(transform.position, _pointStart.transform.position) < 0.1f)
+            if (Vector3.Distance(transform.position, _pointStart.transform.position) < _distance)
             {
                 _reversed = true;
             }

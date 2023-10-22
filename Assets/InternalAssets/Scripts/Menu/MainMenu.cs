@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    private AudioSettings _audio;
     private SceneLoader _loader;
     private LevelData _levelData;
     private Panel[] _panels;
@@ -10,10 +11,13 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        _audio = GetComponentInChildren<AudioSettings>(true);
         _loader = FindObjectOfType<SceneLoader>();
         _levelData = FindObjectOfType<LevelData>();
         _panels = GetComponentsInChildren<Panel>(true);
         _levelSelectors = GetComponentsInChildren<LevelSelector>(true);
+
+        _audio.Initialize();
 
         foreach (var panel in _panels)
         {
