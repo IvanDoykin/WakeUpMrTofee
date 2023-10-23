@@ -34,6 +34,9 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        _colliders = new List<Collider2D>();
+        _woods = new List<Wood>();
+
         UpdateState();
         _interactable.SetActive(false);
         _realSizeInteractable.SetActive(true);

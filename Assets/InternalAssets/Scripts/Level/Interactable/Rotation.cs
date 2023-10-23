@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
+    [SerializeField] private float _speed = 0.1f;
     private Rigidbody2D _body;
 
     private void Start()
@@ -13,6 +14,6 @@ public class Rotation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _body.rotation += 360f * Time.fixedDeltaTime;
+        _body.AddTorque(-_speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 }
