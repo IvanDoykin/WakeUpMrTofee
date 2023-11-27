@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] private SleepTofu _tofu;
+    [SerializeField] private SleepTiger _tofu;
 
     private ProgressBar _progressBar;
     private CompletePanelView _completePanel;
@@ -14,9 +14,6 @@ public class Level : MonoBehaviour
     private Music _music;
 
     private bool _completed = false;
-
-    [DllImport("__Internal")]
-    private static extern void ShowAdvertisment();
 
     private void Awake()
     {
@@ -45,7 +42,6 @@ public class Level : MonoBehaviour
 
     public void Reload()
     {
-        ShowAdvertisment();
         _loader.ReloadLevel();
         _music.PlayDefaultMusic();
     }
@@ -58,7 +54,6 @@ public class Level : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        ShowAdvertisment();
         _loader.LoadLevel(_levelData.NextLevel);
         _levelData.SelectLevel(_levelData.CurrentLevel + 1);
         _music.PlayDefaultMusic();

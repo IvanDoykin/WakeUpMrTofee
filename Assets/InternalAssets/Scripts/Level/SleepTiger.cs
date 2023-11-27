@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SleepTofu : MonoBehaviour
+public class SleepTiger : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _render;
     [SerializeField] private Sprite _wakedSprite;

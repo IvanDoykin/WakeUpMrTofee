@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    private readonly Vector3 _offset = new Vector3(-100f, 100f, 0f);
+
     [SerializeField] private Transform _root;
     [SerializeField] private TriggerReceiver _triggerReceiver;
 
@@ -71,7 +73,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         if (_isDragging)
         {
-            Vector3 screenPoint = new Vector3(eventData.position.x, eventData.position.y, _camera.WorldToScreenPoint(_rectTransform.position).z);
+            Vector3 screenPoint = new Vector3(eventData.position.x, eventData.position.y, _camera.WorldToScreenPoint(_rectTransform.position).z) + _offset;
             Vector3 worldPosition = _camera.ScreenToWorldPoint(screenPoint);
             _rectTransform.position = worldPosition;
         }
